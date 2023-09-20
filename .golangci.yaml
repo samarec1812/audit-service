@@ -1,0 +1,56 @@
+run:
+  timeout: 5m
+  tests: true
+#    skip-dirs:
+#        - test/testdata_etc # test files
+#    skip-files:
+#        -
+
+linters-settings:
+  lll:
+    line-length: 140
+  whitespace:
+    multi-if: true
+
+#список линтеров
+linters:
+  disable-all: true
+  enable:
+    - bodyclose
+    - depguard
+    - dogsled
+    - dupl
+    - errcheck
+    - exportloopref
+    - funlen
+    - gochecknoinits
+    - goconst
+    - gocritic
+    - gocyclo
+    - gofmt
+    - goimports
+    - gomnd
+    - goprintffuncname
+    - gosec
+    - gosimple
+    - govet
+    - ineffassign
+    - lll
+    - misspell
+    - nakedret
+    - noctx
+    - nolintlint
+    - revive
+    - staticcheck
+    - stylecheck
+    - typecheck
+    - unconvert
+    - unparam
+    - unused
+
+issues:
+  exclude-rules:
+    # disable funlen for app.go file
+    - path: app.go
+      linters:
+        - funlen
