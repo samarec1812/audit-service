@@ -46,3 +46,16 @@ func (a *DataRequest) Scan(value interface{}) error {
 
 	return json.Unmarshal(b, &a)
 }
+
+func Validate(headers, body map[string]any) error {
+	v, ok := headers["X-Tantum-Authorization"].([]string)
+	if !ok || len(v) == 0 {
+		return errors.New("not have user_id in headers")
+	}
+
+	if len(body) == 0 {
+		return errors.New("request not have body")
+	}
+
+	return nil
+}

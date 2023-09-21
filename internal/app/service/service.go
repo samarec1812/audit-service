@@ -24,6 +24,11 @@ func NewApp(eventRepo EventRepository) App {
 }
 
 func (a *app) SaveEvent(ctx context.Context, headers, body map[string]any) error {
+	err := entity.Validate(headers, body)
+	if err != nil {
+		return nil
+	}
+	
 	event := entity.NewEvent(headers, body)
 
 	//fmt.Println(event)
